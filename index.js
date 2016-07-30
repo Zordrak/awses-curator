@@ -6,8 +6,14 @@ var excludedIndices = (process.env.EXCLUDED_INDICES || '.kibana').split(/[ ,]/);
 var indexDate = moment.utc().subtract(+(process.env.MAX_INDEX_AGE || 14), 'days');
 
 exports.handler = function(event, context) {
+  var myCredentials = new AWS.EnvironmentCredentials('AWS'); // Lambda provided credentials 
   var client = new elasticsearch.Client({
     host: endpoint,
+    connectionClass: require('http-aws-es'),
+    amazonES: {
+      regions: "eu-west-1",
+      credentials: myCredentials
+    }
   });
 
   getIndices(client)
