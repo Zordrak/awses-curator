@@ -1,6 +1,6 @@
 {
   "name": "awses-curator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fork of everydayhero/logar-curator. A Lambda function that curates indices in an Elasticsearch cluster. AWS ES support added",
   "main": "index.js",
   "scripts": {
