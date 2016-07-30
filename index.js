@@ -1,13 +1,21 @@
-var elasticsearch = require('elasticsearch');
-var moment = require('moment');
+var moment = require("moment");
+var elasticsearch = require("elasticsearch");
+var AWS = require('aws-sdk');
 
 var endpoint = process.env.ENDPOINT;
+var es_region = process.env.ES_REGION;
 var excludedIndices = (process.env.EXCLUDED_INDICES || '.kibana').split(/[ ,]/);
 var indexDate = moment.utc().subtract(+(process.env.MAX_INDEX_AGE || 14), 'days');
 
 exports.handler = function(event, context) {
+  var myCredentials = new AWS.EnvironmentCredentials('AWS'); // Lambda provided credentials 
   var client = new elasticsearch.Client({
     host: endpoint,
+    connectionClass: require('http-aws-es'),
+    amazonES: {
+      region: es_region,
+      credentials: myCredentials
+    }
   });
 
   getIndices(client)
