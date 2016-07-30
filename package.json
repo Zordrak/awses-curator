@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/everydayhero/logar-curator",
+  "homepage": "https://github.com/Zordrak/logar-curator",
   "author": "Marty Zalega <marty@zalega.me>",
   "license": "MIT",
   "dependencies": {
     "elasticsearch": "^10.1.3",
-    "moment": "^2.12.0"
+    "moment": "^2.12.0",
+    "http-aws-es": "^1.1.3"
   }
 }
