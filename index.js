@@ -1,5 +1,6 @@
-var elasticsearch = require('elasticsearch');
-var moment = require('moment');
+var moment = require("moment");
+var elasticsearch = require("elasticsearch");
+var AWS = require('aws-sdk');
 
 var endpoint = process.env.ENDPOINT;
 var excludedIndices = (process.env.EXCLUDED_INDICES || '.kibana').split(/[ ,]/);
