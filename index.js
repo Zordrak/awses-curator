@@ -3,6 +3,7 @@ var elasticsearch = require("elasticsearch");
 var AWS = require('aws-sdk');
 
 var endpoint = process.env.ENDPOINT;
+var es_region = process.env.ES_REGION;
 var excludedIndices = (process.env.EXCLUDED_INDICES || '.kibana').split(/[ ,]/);
 var indexDate = moment.utc().subtract(+(process.env.MAX_INDEX_AGE || 14), 'days');
 
@@ -12,7 +13,7 @@ exports.handler = function(event, context) {
     host: endpoint,
     connectionClass: require('http-aws-es'),
     amazonES: {
-      region: "eu-west-1",
+      region: es_region,
       credentials: myCredentials
     }
   });
