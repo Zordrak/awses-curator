@@ -12,7 +12,7 @@ exports.handler = function(event, context) {
     host: endpoint,
     connectionClass: require('http-aws-es'),
     amazonES: {
-      regions: "eu-west-1",
+      region: "eu-west-1",
       credentials: myCredentials
     }
   });
